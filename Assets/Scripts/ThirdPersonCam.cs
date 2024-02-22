@@ -12,7 +12,7 @@ public class ThirdPersonCam : MonoBehaviour
     public Transform player;
     public Transform playerObject;
     public Rigidbody rigidB;
-    public KeyCode aimKey;
+    public KeyCode aimKey = KeyCode.Mouse1;
 
     public GameObject thirdPersonCam;
     public GameObject combatCam;
