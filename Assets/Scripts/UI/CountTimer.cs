@@ -11,9 +11,12 @@ public class CountTimer : MonoBehaviour
     public float startingTime = 10f;
     [SerializeField] TextMeshProUGUI countdownText;
     [SerializeField] float resetTime;
+    [SerializeField] float resetBarMultiplier;
     public bool isResetting;
     public float timePassed = 0;
     [SerializeField] string repairMessage = "Rebooting";
+    [SerializeField] Slider recoverySlider;
+    [SerializeField] GameObject slider;
 
     private void Start()
     {
@@ -41,6 +44,8 @@ public class CountTimer : MonoBehaviour
 
     private void ReEnableTimer()
     {
+        slider.SetActive(true);
+        recoverySlider = slider.GetComponent<Slider>();
         outOfTime = true;
 
         if (outOfTime && timePassed <= resetTime)
@@ -51,10 +56,12 @@ public class CountTimer : MonoBehaviour
             {
                 countdownText.text = repairMessage;
             }
+            recoverySlider.value = timePassed * resetBarMultiplier;
 
         }
         else if(outOfTime && timePassed >= resetTime)
         {
+            slider.SetActive(false);
             Debug.Log("all fixed!");
             currentTime = startingTime;
             outOfTime = false;
