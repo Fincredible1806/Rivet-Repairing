@@ -55,6 +55,7 @@ public class RepairSite : MonoBehaviour
             {
                 repairSlider.value = fixTimeTaken * halfFixMultiplier;
             }
+            fixTimeTaken -= Time.deltaTime / 3;
         }
     }
 
@@ -131,7 +132,6 @@ public class RepairSite : MonoBehaviour
     {
         if (other.CompareTag(playerTag))
         {
-            fixTimeTaken -= Time.deltaTime / 2;
             playerInRange = false;
             fixCanvas.SetActive(false);
         }
