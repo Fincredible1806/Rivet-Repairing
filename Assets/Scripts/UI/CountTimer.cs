@@ -6,17 +6,23 @@ using TMPro;
 
 public class CountTimer : MonoBehaviour
 {
+    [Header("References")]
+
+    [SerializeField] TextMeshProUGUI countdownText;
+    [SerializeField] Slider recoverySlider;
+    [SerializeField] GameObject slider;
+
+    [Header("Variables")]
+
     public bool outOfTime;
     public float currentTime = 0f;
     public float startingTime = 10f;
-    [SerializeField] TextMeshProUGUI countdownText;
     [SerializeField] float resetTime;
     [SerializeField] float resetBarMultiplier;
     public bool isResetting;
     public float timePassed = 0;
     [SerializeField] string repairMessage = "Rebooting";
-    [SerializeField] Slider recoverySlider;
-    [SerializeField] GameObject slider;
+
 
     private void Start()
     {

@@ -2831,12 +2831,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
---- !u!1 &1717249795 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9009380961499097373, guid: b22a94b9c727cb942800d3b63bef3137,
-    type: 3}
-  m_PrefabInstance: {fileID: 5265332757493101467}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1839357476
 GameObject:
   m_ObjectHideFlags: 0
@@ -3559,8 +3553,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1885004569}
   - component: {fileID: 1885004573}
-  - component: {fileID: 1885004572}
-  - component: {fileID: 1885004571}
   - component: {fileID: 1885004570}
   m_Layer: 9
   m_Name: Camera_1
@@ -3645,38 +3637,6 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
---- !u!167 &1885004571
-AudioReverbZone:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1885004568}
-  m_Enabled: 1
-  m_MinDistance: 10
-  m_MaxDistance: 15
-  m_ReverbPreset: 20
-  m_Room: -1000
-  m_RoomHF: -2000
-  m_DecayTime: 1.49
-  m_DecayHFRatio: 0.5
-  m_Reflections: -2466
-  m_ReflectionsDelay: 0.179
-  m_Reverb: -1926
-  m_ReverbDelay: 0.1
-  m_HFReference: 5000
-  m_Diffusion: 21
-  m_Density: 100
-  m_LFReference: 250
-  m_RoomLF: 0
---- !u!81 &1885004572
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1885004568}
-  m_Enabled: 1
 --- !u!20 &1885004573
 Camera:
   m_ObjectHideFlags: 0
@@ -5147,7 +5107,7 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1379714758555223097, guid: b22a94b9c727cb942800d3b63bef3137,
+    - target: {fileID: 1388500712960021013, guid: b22a94b9c727cb942800d3b63bef3137,
         type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -5217,26 +5177,6 @@ PrefabInstance:
       propertyPath: camera
       value: 
       objectReference: {fileID: 1885004573}
-    - target: {fileID: 6514637806421206411, guid: b22a94b9c727cb942800d3b63bef3137,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6812670763344602749, guid: b22a94b9c727cb942800d3b63bef3137,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6812670763344602749, guid: b22a94b9c727cb942800d3b63bef3137,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7063531024656178322, guid: b22a94b9c727cb942800d3b63bef3137,
-        type: 3}
-      propertyPath: slider
-      value: 
-      objectReference: {fileID: 1717249795}
     - target: {fileID: 7401629348295767550, guid: b22a94b9c727cb942800d3b63bef3137,
         type: 3}
       propertyPath: m_Mesh
@@ -5247,16 +5187,21 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 2090788116}
+    - target: {fileID: 7695661683044528630, guid: b22a94b9c727cb942800d3b63bef3137,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7695661683044528630, guid: b22a94b9c727cb942800d3b63bef3137,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8843619238524072036, guid: b22a94b9c727cb942800d3b63bef3137,
         type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 212560766}
-    - target: {fileID: 9009380961499097373, guid: b22a94b9c727cb942800d3b63bef3137,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

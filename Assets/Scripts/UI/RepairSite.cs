@@ -2,31 +2,59 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RepairSite : MonoBehaviour
 {
-    public CountTimer countTimer;
-    [SerializeField] bool countingDown;
-    [SerializeField] string playerTag;
+    [Header("References")]
+
     [SerializeField] GameObject fixCanvas;
-    [SerializeField] float fixingTime;
-    [SerializeField] float shortFixTime;
-    [SerializeField] float fixTimeTaken;
-    [SerializeField] bool playerInRange;
+    [SerializeField] GameObject repairBar;
+    [SerializeField] Slider repairSlider;
+    public CountTimer countTimer;
+
+    [Header("Keybinds")]
+
     [SerializeField] KeyCode fixKey;
+
+    [Header("Variables")]
+
+    [SerializeField] string playerTag;
+    [SerializeField] float fixingTime;
+    [SerializeField] float fullFixMultiplier;
+    float halfFixMultiplier;
+    float shortFixTime;
+    float fixTimeTaken;
+    bool playerInRange;
+
+
     // Start is called before the first frame update
     void Start()
     {
+        repairBar.SetActive(false);
         shortFixTime = fixingTime / 2;
+        halfFixMultiplier = fullFixMultiplier * 2;
     }
 
     // Update is called once per frame
     void Update()
     {
         TimeOutChecker();
-        if(playerInRange && Input.GetKey(fixKey))
+        if(playerInRange && !countTimer.isResetting && Input.GetKey(fixKey))
         {
             FixObject();
+        }
+
+        if(!playerInRange && repairBar.activeSelf == true)
+        {
+            if (countTimer.outOfTime)
+            {
+                repairSlider.value = fixTimeTaken * fullFixMultiplier;
+            }
+            else
+            {
+                repairSlider.value = fixTimeTaken * halfFixMultiplier;
+            }
         }
     }
 
@@ -40,12 +68,15 @@ public class RepairSite : MonoBehaviour
 
     public void FixObject()
     {
-        if (countTimer.outOfTime == true)
+        
+        if (countTimer.outOfTime)
         {
+            repairBar.SetActive(true);
             FullTimeFix();
         }
-        if (countTimer.outOfTime == false)
+        if (!countTimer.outOfTime)
         {
+            repairBar.SetActive(true);
             HalfTimeFix();
         }    
     }
@@ -55,9 +86,11 @@ public class RepairSite : MonoBehaviour
         if (fixTimeTaken < fixingTime)
         {
             fixTimeTaken += Time.deltaTime;
+            repairSlider.value = fixTimeTaken * fullFixMultiplier;
         }
         else if (fixTimeTaken >= fixingTime)
         {
+            repairBar.SetActive(false);
             RepairsComplete();
         }
     }
@@ -66,12 +99,15 @@ public class RepairSite : MonoBehaviour
 
     private void HalfTimeFix()
     {
+
         if (fixTimeTaken < shortFixTime)
         {
             fixTimeTaken += Time.deltaTime;
+            repairSlider.value = fixTimeTaken * halfFixMultiplier;
         }
         else if (fixTimeTaken >= shortFixTime)
         {
+            repairBar.SetActive(false);
             RepairsComplete();
         }
     }
@@ -95,6 +131,7 @@ public class RepairSite : MonoBehaviour
     {
         if (other.CompareTag(playerTag))
         {
+            fixTimeTaken -= Time.deltaTime / 2;
             playerInRange = false;
             fixCanvas.SetActive(false);
         }
