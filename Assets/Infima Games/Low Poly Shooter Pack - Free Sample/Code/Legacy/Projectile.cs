@@ -23,9 +23,12 @@ public class Projectile : MonoBehaviour {
 	public Transform [] metalImpactPrefabs;
 	public Transform [] dirtImpactPrefabs;
 	public Transform []	concreteImpactPrefabs;
+	public string playerName;
+	public Transform playerTransform;
 
 	private void Start ()
 	{
+		playerTransform = GameObject.Find(playerName).transform;
 		//Grab the game mode service, we need it to access the player character!
 		var gameModeService = ServiceLocator.Current.Get<IGameModeService>();
 		//Ignore the main player character's collision. A little hacky, but it should work.
@@ -146,6 +149,7 @@ public class Projectile : MonoBehaviour {
 		{
 			EnemyAiController controller = collision.transform.gameObject.GetComponent<EnemyAiController>();
 			controller.TakeDamage(enemyDamage);
+			controller.walkPoint = playerTransform.position;
 
 		}
 	}

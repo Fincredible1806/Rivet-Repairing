@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Rendering;
@@ -22,6 +23,7 @@ public class EnemyAiController : MonoBehaviour
     [Header("Attacking")]
     public float timeBetweenAttack;
     bool alreadyAttacked;
+    public float attackSpread;
 
     [Header("Ranges")]
     public float sightRange;
@@ -109,12 +111,7 @@ public class EnemyAiController : MonoBehaviour
 
     private void Attacking()
     {
-
-        // Attack code
-        Rigidbody rb = Instantiate(projectile, attackLocation.transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-        rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-        rb.AddForce(transform.up * 8f, ForceMode.Impulse);
-
+            
         // enemy doesn't move when in range
         agent.SetDestination(transform.position);
 
@@ -123,6 +120,9 @@ public class EnemyAiController : MonoBehaviour
 
         if (!alreadyAttacked)
         {
+            Rigidbody rb = Instantiate(projectile, attackLocation.transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+            rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
+            rb.AddForce(transform.up * 8f, ForceMode.Impulse);
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttack * Time.deltaTime);
         }
