@@ -10,12 +10,12 @@ namespace InfimaGames.LowPolyShooterPack
     public class Weapon : WeaponBehaviour
     {
         #region FIELDS SERIALIZED
-        
-        [Header("Firing")]
 
+        [Header("Firing")]
+        Projectile projectileDamage;
+        public int weaponDamage;
         [Tooltip("Is this weapon automatic? If yes, then holding down the firing button will continuously fire.")]
-        [SerializeField] 
-        private bool automatic;
+        [SerializeField] private bool automatic;
         
         [Tooltip("How fast the projectiles are.")]
         [SerializeField]
@@ -234,7 +234,10 @@ namespace InfimaGames.LowPolyShooterPack
             //Spawn projectile from the projectile spawn point.
             GameObject projectile = Instantiate(prefabProjectile, muzzleSocket.position, rotation);
             //Add velocity to the projectile.
-            projectile.GetComponent<Rigidbody>().velocity = projectile.transform.forward * projectileImpulse;   
+            projectileDamage = projectile.GetComponent<Projectile>();
+            projectileDamage.enemyDamage = weaponDamage;
+            projectile.GetComponent<Rigidbody>().velocity = projectile.transform.forward * projectileImpulse;
+            
         }
 
         public override void FillAmmunition(int amount)

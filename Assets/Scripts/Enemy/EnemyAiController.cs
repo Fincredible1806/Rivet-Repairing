@@ -9,7 +9,10 @@ public class EnemyAiController : MonoBehaviour
     public NavMeshAgent agent;
     public Transform player;
     public LayerMask whatIsGround, whatIsPlayer;
+    public Transform attackLocation;
     [SerializeField] private string playerName;
+    public GameObject projectile;
+    public int health;
 
     [Header("Patrolling")]
     public Vector3 walkPoint;
@@ -20,8 +23,9 @@ public class EnemyAiController : MonoBehaviour
     public float timeBetweenAttack;
     bool alreadyAttacked;
 
-    [Header("States")]
-    public float sightRange, attackRange;
+    [Header("Ranges")]
+    public float sightRange;
+    public float attackRange;
     public bool playerInSightRange, playerInAttackRange;
 
     private void Awake()
@@ -64,6 +68,8 @@ public class EnemyAiController : MonoBehaviour
 
     private void Patrol()
     {
+        //Get a walk point
+
         if (!walkPointSet)
         {
             SearchForWalkPoint();
@@ -103,20 +109,50 @@ public class EnemyAiController : MonoBehaviour
 
     private void Attacking()
     {
-        // enemy doesn't move
+
+        // Attack code
+        Rigidbody rb = Instantiate(projectile, attackLocation.transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+        rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
+        rb.AddForce(transform.up * 8f, ForceMode.Impulse);
+
+        // enemy doesn't move when in range
         agent.SetDestination(transform.position);
 
+        //Ememy looks at player
         transform.LookAt(player);
 
         if (!alreadyAttacked)
         {
             alreadyAttacked = true;
-            Invoke(nameof(ResetAttack), timeBetweenAttack);
+            Invoke(nameof(ResetAttack), timeBetweenAttack * Time.deltaTime);
         }
     }
 
     private void ResetAttack()
     {
         alreadyAttacked = false;
+    }
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+
+        if(health <= 0)
+        {
+            Invoke(nameof(DestroyEnemy), .5f);
+        }
+    }
+
+    private void DestroyEnemy()
+    {
+        Destroy(gameObject);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, sightRange);
     }
 }

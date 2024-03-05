@@ -16,6 +16,8 @@ public class Projectile : MonoBehaviour {
 	[Tooltip("Maximum time after impact that the bullet is destroyed")]
 	public float maxDestroyTime;
 
+	public int enemyDamage;
+
 	[Header("Impact Effect Prefabs")]
 	public Transform [] bloodImpactPrefabs;
 	public Transform [] metalImpactPrefabs;
@@ -67,7 +69,7 @@ public class Projectile : MonoBehaviour {
 		}
 
 		//If bullet collides with "Blood" tag
-		if (collision.transform.tag == "Blood") 
+		if (collision.transform.CompareTag("Blood")) 
 		{
 			//Instantiate random impact prefab from array
 			Instantiate (bloodImpactPrefabs [Random.Range 
@@ -77,9 +79,9 @@ public class Projectile : MonoBehaviour {
 			Destroy(gameObject);
 		}
 
-		//If bullet collides with "Metal" tag
-		if (collision.transform.tag == "Metal") 
-		{
+        //If bullet collides with "Metal" tag
+        if (collision.transform.CompareTag("Metal"))
+        {
 			//Instantiate random impact prefab from array
 			Instantiate (metalImpactPrefabs [Random.Range 
 				(0, bloodImpactPrefabs.Length)], transform.position, 
@@ -89,7 +91,7 @@ public class Projectile : MonoBehaviour {
 		}
 
 		//If bullet collides with "Dirt" tag
-		if (collision.transform.tag == "Dirt") 
+		if (collision.transform.CompareTag("Dirt")) 
 		{
 			//Instantiate random impact prefab from array
 			Instantiate (dirtImpactPrefabs [Random.Range 
@@ -100,7 +102,7 @@ public class Projectile : MonoBehaviour {
 		}
 
 		//If bullet collides with "Concrete" tag
-		if (collision.transform.tag == "Concrete") 
+		if (collision.transform.CompareTag("Concrete")) 
 		{
 			//Instantiate random impact prefab from array
 			Instantiate (concreteImpactPrefabs [Random.Range 
@@ -111,7 +113,7 @@ public class Projectile : MonoBehaviour {
 		}
 
 		//If bullet collides with "Target" tag
-		if (collision.transform.tag == "Target") 
+		if (collision.transform.CompareTag("Target")) 
 		{
 			//Toggle "isHit" on target object
 			collision.transform.gameObject.GetComponent
@@ -121,7 +123,7 @@ public class Projectile : MonoBehaviour {
 		}
 			
 		//If bullet collides with "ExplosiveBarrel" tag
-		if (collision.transform.tag == "ExplosiveBarrel") 
+		if (collision.transform.CompareTag("ExplosiveBarrel")) 
 		{
 			//Toggle "explode" on explosive barrel object
 			collision.transform.gameObject.GetComponent
@@ -131,13 +133,20 @@ public class Projectile : MonoBehaviour {
 		}
 
 		//If bullet collides with "GasTank" tag
-		if (collision.transform.tag == "GasTank") 
+		if (collision.transform.CompareTag("GasTank")) 
 		{
 			//Toggle "isHit" on gas tank object
 			collision.transform.gameObject.GetComponent
 				<GasTankScript> ().isHit = true;
 			//Destroy bullet object
 			Destroy(gameObject);
+		}
+
+		if (collision.transform.CompareTag("Enemy"))
+		{
+			EnemyAiController controller = collision.transform.gameObject.GetComponent<EnemyAiController>();
+			controller.TakeDamage(enemyDamage);
+
 		}
 	}
 
