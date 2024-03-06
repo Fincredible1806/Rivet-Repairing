@@ -14,6 +14,7 @@ public class EnemyAiController : MonoBehaviour
     [SerializeField] private string playerName;
     public GameObject projectile;
     public int health;
+    [SerializeField] private GameObject deathParticle;
 
     [Header("Patrolling")]
     public Vector3 walkPoint;
@@ -145,6 +146,7 @@ public class EnemyAiController : MonoBehaviour
 
     private void DestroyEnemy()
     {
+        Instantiate(deathParticle).transform.position = transform.position;
         Destroy(gameObject);
     }
 
