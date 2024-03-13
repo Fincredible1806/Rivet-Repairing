@@ -15,6 +15,10 @@ public class EnemyAiController : MonoBehaviour
     public GameObject projectile;
     public int health;
     [SerializeField] private GameObject deathParticle;
+    public Animator animator;
+    [SerializeField] private string attackBool;
+    [SerializeField] private string walkBool;
+    [SerializeField] private string idleBool;
 
     [Header("Patrolling")]
     public Vector3 walkPoint;
@@ -107,17 +111,23 @@ public class EnemyAiController : MonoBehaviour
 
     private void Chasing()
     {
+        animator.SetBool(idleBool, false);
+        animator.SetBool(walkBool, true);
+        animator.SetBool(attackBool, false);
         agent.SetDestination(player.position);
     }
 
     private void Attacking()
     {
-            
+        animator.SetBool(idleBool, true);
+        animator.SetBool(walkBool, false);
+        animator.SetBool(attackBool, true);
+
         // enemy doesn't move when in range
         agent.SetDestination(transform.position);
 
         //Ememy looks at player
-        transform.LookAt(player);
+        transform.LookAt(player.transform.position, transform.up);
 
         if (!alreadyAttacked)
         {
