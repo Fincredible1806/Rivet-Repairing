@@ -3,6 +3,8 @@ using UnityEngine;
 using System.Collections;
 using InfimaGames.LowPolyShooterPack;
 using Random = UnityEngine.Random;
+using Unity.VisualScripting;
+using UnityEngine.AI;
 
 public class Projectile : MonoBehaviour {
 
@@ -150,7 +152,6 @@ public class Projectile : MonoBehaviour {
 			EnemyAiController controller = collision.transform.gameObject.GetComponent<EnemyAiController>();
 			controller.TakeDamage(enemyDamage);
 			controller.walkPoint = playerTransform.position;
-
 		}
 	}
 
