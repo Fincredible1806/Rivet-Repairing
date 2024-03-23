@@ -9,19 +9,16 @@ public class EnemyAiController : MonoBehaviour
     [Header("References")]
     public NavMeshAgent agent;
     public Transform player;
+    public LayerMask whatIsGround, whatIsPlayer;
     public Transform attackLocation;
+    [SerializeField] private string playerName;
     public GameObject projectile;
+    public int health;
     [SerializeField] private GameObject deathParticle;
     public Animator animator;
-
-    [Header("Variables")]
     [SerializeField] private string attackBool;
     [SerializeField] private string walkBool;
     [SerializeField] private string idleBool;
-    [SerializeField] private string damageTrigger;
-    public int health;
-    [SerializeField] private string playerName;
-    public LayerMask whatIsGround, whatIsPlayer;
 
     [Header("Patrolling")]
     public Vector3 walkPoint;
@@ -150,10 +147,10 @@ public class EnemyAiController : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
-        animator.SetTrigger(damageTrigger);
+
         if(health <= 0)
         {
-            Invoke(nameof(DestroyEnemy), .25f);
+            Invoke(nameof(DestroyEnemy), .5f);
         }
     }
 

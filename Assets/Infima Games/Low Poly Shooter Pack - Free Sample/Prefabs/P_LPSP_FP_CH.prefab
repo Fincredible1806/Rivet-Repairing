@@ -1478,7 +1478,6 @@ MonoBehaviour:
   healthSlider: {fileID: 1208050352613844204}
   fillImage: {fileID: 4681454534118982392}
   fullHealth: 100
-  lowHealthWarning: {fileID: 0}
   health: 0
   lowHealthColor: {r: 1, g: 0, b: 0, a: 1}
   highHealthColor: {r: 0, g: 1, b: 0.2166667, a: 1}
@@ -3185,7 +3184,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3183900682000525695}
   m_Layer: 10
-  m_Name: EnemyTarget
+  m_Name: Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
