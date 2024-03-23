@@ -61,7 +61,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6822206490052413738}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -9.427559, y: 0.626, z: -7.2232423}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -134,23 +134,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 8200404267962068097}
   player: {fileID: 0}
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 128
-  whatIsPlayer:
-    serializedVersion: 2
-    m_Bits: 1024
   attackLocation: {fileID: 8140001053824728614}
-  playerName: P_LPSP_FP_CH
   projectile: {fileID: 7121814482443227283, guid: 75e7e41a7599a324d89baa63d83b241a,
     type: 3}
-  health: 180
   deathParticle: {fileID: 104829970813648393, guid: d3015b7eea383f64d8b81f965cc466e7,
     type: 3}
   animator: {fileID: 322370859821519899}
   attackBool: Attacking
   walkBool: Walking
   idleBool: Idling
+  damageTrigger: Damaged
+  health: 180
+  playerName: EnemyTarget
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 128
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 1024
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 100
   timeBetweenAttack: 300
