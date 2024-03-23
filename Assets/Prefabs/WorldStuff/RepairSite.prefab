@@ -128,7 +128,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3973011975871415876
 RectTransform:
   m_ObjectHideFlags: 0
@@ -445,7 +445,7 @@ RectTransform:
   m_Father: {fileID: 5551210146512921644}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 5, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -951,7 +951,7 @@ GameObject:
   - component: {fileID: 7063531024656178322}
   - component: {fileID: 5683409921917645111}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: RepairSiteCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -966,8 +966,8 @@ RectTransform:
   m_GameObject: {fileID: 4681754617451528131}
   m_LocalRotation: {x: -0, y: 0.70710677, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 1.7102518}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8232284233339956085}
   - {fileID: 3973011975871415876}
@@ -1057,17 +1057,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5cb890599f43ba4ca35a7aa5b0f5bb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  countdownText: {fileID: 4283962148922885970}
+  recoverySlider: {fileID: 684608431071161681}
+  slider: {fileID: 9009380961499097373}
   outOfTime: 0
   currentTime: 0
   startingTime: 10
-  countdownText: {fileID: 4283962148922885970}
   resetTime: 3
   resetBarMultiplier: 33.333
   isResetting: 0
   timePassed: 0
   repairMessage: Rebooting
-  recoverySlider: {fileID: 684608431071161681}
-  slider: {fileID: 9009380961499097373}
 --- !u!114 &5683409921917645111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1502,7 +1502,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2656
+  m_VersionIndex: 2659
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1555,7 +1555,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c22777d6e868e4f2fb421913386b154e, type: 2}
+  - {fileID: 2100000, guid: 37f44784b997c45b9a595c398925ed6a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1619,14 +1619,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d67793c065a547849b44fd74a9b1f68f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTag: Player
   fixCanvas: {fileID: 1379714758555223097}
-  fixingTime: 5
-  fixKey: 101
   repairBar: {fileID: 1388500712960021013}
   repairSlider: {fileID: 2508542559625905951}
-  fullFixMultiplier: 20
   countTimer: {fileID: 7063531024656178322}
+  fixKey: 101
+  playerTag: Player
+  fixingTime: 5
+  fullFixMultiplier: 20
 --- !u!65 &5729444529731355312
 BoxCollider:
   m_ObjectHideFlags: 0
