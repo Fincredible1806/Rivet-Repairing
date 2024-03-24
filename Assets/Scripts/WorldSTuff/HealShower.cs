@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class HealShower : MonoBehaviour
 {
-    [Header("Vars and Refs")]
-    [SerializeField] GameObject healParticles;
+    [Header("Player Info")]
     [SerializeField] PlayerHealth playerHealth;
-    [SerializeField] Transform particleSpawnLocation;
+    [SerializeField] string playerTag;
     [SerializeField] int healValue;
+
+    [Header("Heal Pad References and Variables")]
+    [SerializeField] GameObject healParticles;
+    [SerializeField] Transform particleSpawnLocation;
     private GameObject spawnedParticles;
     [SerializeField] private float useTime;
     [SerializeField] private float timePassed;
     private bool isRebooting;
+    [SerializeField] AudioClip healSprayAudio;
+    [SerializeField] AudioClip fullHealthAudio;
 
     private void Update()
     {
@@ -29,11 +34,19 @@ public class HealShower : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (!isRebooting)
-        spawnedParticles = Instantiate(healParticles, particleSpawnLocation);
-        playerHealth.TakeDamage(-healValue);
-        Destroy(spawnedParticles, 100 * Time.deltaTime);
-        isRebooting = true;
+        if (!isRebooting && playerHealth.health < playerHealth.fullHealth && other.CompareTag(playerTag))
+        {
+            spawnedParticles = Instantiate(healParticles, particleSpawnLocation);
+            AudioSource.PlayClipAtPoint(healSprayAudio, transform.position);
+            playerHealth.TakeDamage(-healValue);
+            Destroy(spawnedParticles, 100 * Time.deltaTime);
+            isRebooting = true;
+        }
+        
+        if(!isRebooting && playerHealth.health >= playerHealth.fullHealth && other.CompareTag(playerTag))
+        {
+            AudioSource.PlayClipAtPoint(fullHealthAudio, transform.position);
+        }
     }
 
 }

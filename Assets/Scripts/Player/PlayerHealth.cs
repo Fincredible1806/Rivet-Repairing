@@ -9,7 +9,7 @@ public class PlayerHealth : MonoBehaviour
     [Header("References")]
     [SerializeField] private Slider healthSlider;
     public Image fillImage;
-    [SerializeField] private float fullHealth;
+    public float fullHealth;
     [SerializeField] private GameObject lowHealthWarning;
     [SerializeField] private Movement movement;
     [SerializeField] private Character character;
