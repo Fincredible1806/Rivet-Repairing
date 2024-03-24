@@ -23,6 +23,7 @@ public class EnemyAiController : MonoBehaviour
     [SerializeField] private string playerName;
     public LayerMask whatIsGround, whatIsPlayer;
 
+
     [Header("Patrolling")]
     public Vector3 walkPoint;
     bool walkPointSet;
@@ -32,6 +33,8 @@ public class EnemyAiController : MonoBehaviour
     public float timeBetweenAttack;
     bool alreadyAttacked;
     public float attackSpread;
+    [SerializeField] float attackForce = 32f;
+    [SerializeField] float attackUpForce = 4f;
 
     [Header("Ranges")]
     public float sightRange;
@@ -135,8 +138,8 @@ public class EnemyAiController : MonoBehaviour
         if (!alreadyAttacked)
         {
             Rigidbody rb = Instantiate(projectile, attackLocation.transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-            rb.AddForce(transform.up * 8f, ForceMode.Impulse);
+            rb.AddForce(transform.forward * attackForce, ForceMode.Impulse);
+            rb.AddForce(transform.up * attackUpForce, ForceMode.Impulse);
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttack * Time.deltaTime);
         }
