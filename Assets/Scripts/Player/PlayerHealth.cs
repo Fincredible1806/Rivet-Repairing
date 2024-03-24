@@ -11,7 +11,8 @@ public class PlayerHealth : MonoBehaviour
     public Image fillImage;
     [SerializeField] private float fullHealth;
     [SerializeField] private GameObject lowHealthWarning;
-    private GameObject thePlayer;
+    [SerializeField] private Movement movement;
+    [SerializeField] private Character character;
     [Header("Variables")]
     public float health;
     public Color lowHealthColor = Color.red;
@@ -41,7 +42,8 @@ public class PlayerHealth : MonoBehaviour
 
     public void Dead()
     {
-        thePlayer.SetActive(false);
+        movement.enabled = false;
+        character.enabled = false;
         dead = true;
     }
 
