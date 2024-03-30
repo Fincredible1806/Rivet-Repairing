@@ -145,7 +145,7 @@ MonoBehaviour:
   idleBool: Idling
   damageTrigger: Damaged
   health: 180
-  playerName: EnemyTarget
+  playerName: PlayerTarget
   whatIsGround:
     serializedVersion: 2
     m_Bits: 128
