@@ -151,7 +151,7 @@ public class Projectile : MonoBehaviour {
 		{
 			EnemyAiController controller = collision.transform.gameObject.GetComponent<EnemyAiController>();
 			controller.TakeDamage(enemyDamage);
-			controller.walkPoint = playerTransform.position;
+			controller.walkPoint = new Vector3(playerTransform.position.x, controller.transform.position.y, playerTransform.position.z);
 		}
 	}
 

@@ -120,7 +120,8 @@ public class EnemyAiController : MonoBehaviour
         animator.SetBool(idleBool, false);
         animator.SetBool(walkBool, true);
         animator.SetBool(attackBool, false);
-        agent.SetDestination(player.position);
+        walkPoint = new Vector3(player.position.x, transform.position.y, player.position.z);
+        agent.SetDestination(walkPoint);
     }
 
     private void Attacking()
@@ -153,11 +154,13 @@ public class EnemyAiController : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
+        Debug.Log("TookDamage");
         animator.SetTrigger(damageTrigger);
         if(health <= 0)
         {
             Invoke(nameof(DestroyEnemy), .25f);
         }
+
     }
 
     private void DestroyEnemy()

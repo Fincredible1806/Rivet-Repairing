@@ -5,11 +5,13 @@ using UnityEngine;
 public class DamageVolume : MonoBehaviour
 {
     [Header("Variables")]
-    [SerializeField] private int damageToPlayer;
-    [SerializeField] private int damageToEnemy;
+    public int damageToPlayer;
+    public int damageToEnemy;
     private PlayerHealth health;
     [SerializeField] private string enemyTag;
     [SerializeField] private string playerTag;
+    public float damageInterval = .5f;
+    [SerializeField] private float timeBetweenHits;
 
     private void Start()
     {
@@ -18,13 +20,38 @@ public class DamageVolume : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag(playerTag))
+        Debug.Log(other.gameObject.name);
+
+        if (other.CompareTag(playerTag))
         {
             health.TakeDamage(damageToPlayer);
         }
-        if(other.CompareTag(enemyTag)) 
-        { 
+        if (other.CompareTag(enemyTag))
+        {
             other.GetComponent<EnemyAiController>().TakeDamage(damageToEnemy);
+        }        
+    }
+
+
+    private void OnTriggerStay(Collider other)
+    {
+        if(timeBetweenHits <= damageInterval)
+        {
+            if (other.CompareTag(playerTag))
+            {
+                health.TakeDamage(damageToPlayer);
+            }
+            if( other.CompareTag(enemyTag))
+            {
+                Debug.Log("Dealing Enemy Damage");
+                other.GetComponent<EnemyAiController>().TakeDamage(damageToEnemy);
+            }
+            timeBetweenHits = 0;
         }
+    }
+
+    private void Update()
+    {
+        timeBetweenHits += Time.deltaTime;
     }
 }

@@ -44,8 +44,8 @@ GameObject:
   - component: {fileID: 3568362212506774010}
   - component: {fileID: 7395255291122000519}
   - component: {fileID: 8200404267962068097}
-  - component: {fileID: 142899121070507228}
-  - component: {fileID: 5354685727163767392}
+  - component: {fileID: 4079189319224174862}
+  - component: {fileID: 5292212714145260839}
   m_Layer: 3
   m_Name: EnemySpiderToughest
   m_TagString: Enemy
@@ -185,8 +185,35 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!135 &142899121070507228
-SphereCollider:
+--- !u!54 &4079189319224174862
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6822206490052413738}
+  serializedVersion: 4
+  m_Mass: 1000
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 1
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 2
+--- !u!65 &5292212714145260839
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -204,29 +231,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: -0.28, z: 0.07}
---- !u!135 &5354685727163767392
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6822206490052413738}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.57
-  m_Center: {x: 0, y: -0.28, z: -0.91}
+  m_Size: {x: 1, y: 0.9517087, z: 2.0031333}
+  m_Center: {x: 0, y: -0.075124264, z: -0.35826182}
 --- !u!1001 &6046094965068993654
 PrefabInstance:
   m_ObjectHideFlags: 0
