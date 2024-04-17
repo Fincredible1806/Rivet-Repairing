@@ -35,7 +35,7 @@ public class DamageVolume : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if(timeBetweenHits <= damageInterval)
+        if(timeBetweenHits >= damageInterval)
         {
             if (other.CompareTag(playerTag))
             {
@@ -54,4 +54,11 @@ public class DamageVolume : MonoBehaviour
     {
         timeBetweenHits += Time.deltaTime;
     }
+
+
+    void OnEnable()
+    {
+        timeBetweenHits = damageInterval;
+    }
+
 }

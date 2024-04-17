@@ -11,6 +11,7 @@ public class HealShower : MonoBehaviour
 
     [Header("Heal Pad References and Variables")]
     [SerializeField] GameObject healParticles;
+    [SerializeField] GameObject healLights;
     [SerializeField] Transform particleSpawnLocation;
     private GameObject spawnedParticles;
     [SerializeField] private float useTime;
@@ -29,6 +30,7 @@ public class HealShower : MonoBehaviour
             {
                 timePassed = 0;
                 isRebooting = false;
+                healLights.SetActive(true);
             }
         }
     }
@@ -41,6 +43,7 @@ public class HealShower : MonoBehaviour
             playerHealth.TakeDamage(-healValue);
             Destroy(spawnedParticles, 100 * Time.deltaTime);
             isRebooting = true;
+            healLights.SetActive(false);
         }
         
         if(!isRebooting && playerHealth.health >= playerHealth.fullHealth && other.CompareTag(playerTag))
