@@ -13,12 +13,14 @@ public class EnemyAiController : MonoBehaviour
     public GameObject projectile;
     [SerializeField] private GameObject deathParticle;
     public Animator animator;
+    public PlayerScoreManager playerScoreManager;
 
     [Header("Variables")]
     [SerializeField] private string attackBool;
     [SerializeField] private string walkBool;
     [SerializeField] private string idleBool;
     [SerializeField] private string damageTrigger;
+    public int killScore;
     public int health;
     [SerializeField] private string playerName;
     public LayerMask whatIsGround, whatIsPlayer;
@@ -45,6 +47,7 @@ public class EnemyAiController : MonoBehaviour
     {
         player = GameObject.Find(playerName).transform;
         agent = GetComponent<NavMeshAgent>();
+        playerScoreManager = player.GetComponent<PlayerScoreManager>();
 
     }
 
@@ -165,7 +168,9 @@ public class EnemyAiController : MonoBehaviour
 
     private void DestroyEnemy()
     {
+        // Plays a particle effect, adds score and deletes self
         Instantiate(deathParticle).transform.position = transform.position;
+        playerScoreManager.AddScore(killScore);
         Destroy(gameObject);
     }
 

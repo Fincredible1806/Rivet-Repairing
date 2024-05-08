@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class RepairSite : MonoBehaviour
@@ -12,6 +13,7 @@ public class RepairSite : MonoBehaviour
     [SerializeField] GameObject repairBar;
     [SerializeField] Slider repairSlider;
     public CountTimer countTimer;
+    [SerializeField] private PlayerScoreManager scoreManager;
 
     [Header("Keybinds")]
 
@@ -118,6 +120,7 @@ public class RepairSite : MonoBehaviour
         fixCanvas.SetActive(false);
         fixTimeTaken = 0;
         countTimer.isResetting = true;
+        scoreManager.AddScore(countTimer.currentTime);
     }
     private void OnTriggerEnter(Collider other)
     {
