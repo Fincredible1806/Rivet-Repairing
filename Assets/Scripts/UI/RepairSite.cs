@@ -14,6 +14,7 @@ public class RepairSite : MonoBehaviour
     [SerializeField] Slider repairSlider;
     public CountTimer countTimer;
     [SerializeField] private PlayerScoreManager scoreManager;
+    [SerializeField] RepairManager rManager;
 
     [Header("Keybinds")]
 
@@ -66,6 +67,7 @@ public class RepairSite : MonoBehaviour
         if (countTimer.currentTime <= 0)
         {
             countTimer.outOfTime = true;
+            rManager.SiteDown();
         }
     }
 
@@ -94,6 +96,7 @@ public class RepairSite : MonoBehaviour
         else if (fixTimeTaken >= fixingTime)
         {
             repairBar.SetActive(false);
+            rManager.SiteUp();
             RepairsComplete();
         }
     }
@@ -120,7 +123,7 @@ public class RepairSite : MonoBehaviour
         fixCanvas.SetActive(false);
         fixTimeTaken = 0;
         countTimer.isResetting = true;
-        scoreManager.AddScore(countTimer.currentTime);
+        scoreManager.AddScore(countTimer.currentTime * 10);
     }
     private void OnTriggerEnter(Collider other)
     {
