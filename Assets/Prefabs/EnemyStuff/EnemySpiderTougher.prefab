@@ -140,10 +140,12 @@ MonoBehaviour:
   deathParticle: {fileID: 104829970813648393, guid: d3015b7eea383f64d8b81f965cc466e7,
     type: 3}
   animator: {fileID: 322370859821519899}
+  playerScoreManager: {fileID: 0}
   attackBool: Attacking
   walkBool: Walking
   idleBool: Idling
   damageTrigger: Damaged
+  killScore: 0
   health: 180
   playerName: PlayerTarget
   whatIsGround:
@@ -153,7 +155,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 100
+  walkPointRange: 10
   timeBetweenAttack: 300
   attackSpread: 0
   attackForce: 32
@@ -182,7 +184,7 @@ NavMeshAgent:
   m_AutoRepath: 1
   m_Height: 1.22
   m_BaseOffset: 1
-  m_WalkableMask: 4294967295
+  m_WalkableMask: 1
   m_ObstacleAvoidanceType: 4
 --- !u!54 &-3187360153828130352
 Rigidbody:

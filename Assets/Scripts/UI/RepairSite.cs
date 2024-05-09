@@ -29,6 +29,7 @@ public class RepairSite : MonoBehaviour
     float shortFixTime;
     float fixTimeTaken;
     bool playerInRange;
+    bool isDown;
 
 
     // Start is called before the first frame update
@@ -67,7 +68,11 @@ public class RepairSite : MonoBehaviour
         if (countTimer.currentTime <= 0)
         {
             countTimer.outOfTime = true;
-            rManager.SiteDown();
+            if (!isDown)
+            {
+                rManager.SiteDown();
+                isDown = true;
+            }
         }
     }
 
@@ -96,7 +101,6 @@ public class RepairSite : MonoBehaviour
         else if (fixTimeTaken >= fixingTime)
         {
             repairBar.SetActive(false);
-            rManager.SiteUp();
             RepairsComplete();
         }
     }
@@ -120,9 +124,14 @@ public class RepairSite : MonoBehaviour
 
     private void RepairsComplete()
     {
+        if(isDown)
+        {
+            rManager.SiteUp();
+        }
         fixCanvas.SetActive(false);
         fixTimeTaken = 0;
         countTimer.isResetting = true;
+        isDown = false;
         scoreManager.AddScore(countTimer.currentTime * 10);
     }
     private void OnTriggerEnter(Collider other)

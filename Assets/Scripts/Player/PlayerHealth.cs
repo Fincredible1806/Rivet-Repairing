@@ -13,7 +13,6 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private GameObject lowHealthWarning;
     [SerializeField] private Movement movement;
     [SerializeField] private Character character;
-    [SerializeField] private GameObject weaponUI;
     [Header("Variables")]
     public float health;
     public Color lowHealthColor = Color.red;
@@ -47,7 +46,6 @@ public class PlayerHealth : MonoBehaviour
         character.enabled = false;
         dead = true;
         Time.timeScale = 0f;
-        weaponUI.SetActive(false); 
     }
 
     public void SetHealthUI()

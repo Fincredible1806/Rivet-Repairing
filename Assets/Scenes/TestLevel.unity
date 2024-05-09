@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1831,6 +1831,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1134986836}
   - component: {fileID: 1134986835}
+  - component: {fileID: 1134986837}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -1915,6 +1916,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &1134986837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1134986834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_RenderingLayers: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
 --- !u!1 &1279345525
 GameObject:
   m_ObjectHideFlags: 0
@@ -2449,7 +2473,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1318108279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2476,6 +2500,7 @@ MonoBehaviour:
   spawnChance: 0.5
   timeBetweenSpawns: 2
   timePassed: 0
+  enemyHealthMult: 0
 --- !u!4 &1318108280
 Transform:
   m_ObjectHideFlags: 0
@@ -4960,6 +4985,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RepairSite
+      objectReference: {fileID: 0}
+    - target: {fileID: 3807906908149288396, guid: b22a94b9c727cb942800d3b63bef3137,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4428615704918159579, guid: b22a94b9c727cb942800d3b63bef3137,
         type: 3}
