@@ -116,10 +116,7 @@ namespace InfimaGames.LowPolyShooterPack
             //Make sure that we have a light to flash!
             if (flashLight != null)
             {
-                //Enable the light.
-                flashLight.enabled = true;
-                //Disable the light after a few seconds.
-                StartCoroutine(nameof(DisableLight));
+
             }
         }
 

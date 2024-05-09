@@ -13,6 +13,8 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private GameObject lowHealthWarning;
     [SerializeField] private Movement movement;
     [SerializeField] private Character character;
+    [SerializeField] private GameObject deathCanvas;
+    [SerializeField] private GameObject pauseCanvas;
     [Header("Variables")]
     public float health;
     public Color lowHealthColor = Color.red;
@@ -45,6 +47,8 @@ public class PlayerHealth : MonoBehaviour
         movement.enabled = false;
         character.enabled = false;
         dead = true;
+        pauseCanvas.SetActive(false);
+        deathCanvas.SetActive(true);
         Time.timeScale = 0f;
     }
 

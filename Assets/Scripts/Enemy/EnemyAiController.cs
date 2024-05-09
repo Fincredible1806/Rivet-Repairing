@@ -47,7 +47,7 @@ public class EnemyAiController : MonoBehaviour
     {
         player = GameObject.Find(playerName).transform;
         agent = GetComponent<NavMeshAgent>();
-        playerScoreManager = player.GetComponent<PlayerScoreManager>();
+        playerScoreManager = FindObjectOfType<PlayerScoreManager>();
 
     }
 
