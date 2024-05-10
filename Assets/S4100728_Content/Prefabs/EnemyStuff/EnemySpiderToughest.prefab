@@ -146,7 +146,7 @@ MonoBehaviour:
   walkBool: Walking
   idleBool: Idling
   damageTrigger: Damaged
-  killScore: 0
+  killScore: 165
   health: 220
   playerName: PlayerTarget
   whatIsGround:

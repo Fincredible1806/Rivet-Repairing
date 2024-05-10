@@ -39,6 +39,7 @@ public class PauseMenu : MonoBehaviour
 
     public void PauseGame()
     {
+        Cursor.visible = true;
         playerRoot.SetActive(false);
         Cursor.lockState = CursorLockMode.None;
         isPaused = true;
@@ -50,6 +51,7 @@ public class PauseMenu : MonoBehaviour
 
     public void PlayGame()
     {
+        Cursor.visible = true;
         playerRoot.SetActive(true);
         isPaused = false;
         PauseCanvas.SetActive(false);

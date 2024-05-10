@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private Character character;
     [SerializeField] private GameObject deathCanvas;
     [SerializeField] private GameObject pauseCanvas;
+    [SerializeField] GameObject playerRoot;
+    [SerializeField] GameObject uiCam;
     [Header("Variables")]
     public float health;
     public Color lowHealthColor = Color.red;
@@ -44,6 +47,10 @@ public class PlayerHealth : MonoBehaviour
 
     public void Dead()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        playerRoot.SetActive(false);
+        uiCam.SetActive(true);
         movement.enabled = false;
         character.enabled = false;
         dead = true;
@@ -60,6 +67,11 @@ public class PlayerHealth : MonoBehaviour
         {
 
         }
+    }
+
+    public void ReturnMenuButton()
+    {
+        SceneManager.LoadScene(0);
     }
 
 }

@@ -11,6 +11,7 @@ public class CountTimer : MonoBehaviour
     [SerializeField] TextMeshProUGUI countdownText;
     [SerializeField] Slider recoverySlider;
     [SerializeField] GameObject slider;
+    [SerializeField] GameObject downGraphic;
 
     [Header("Variables")]
 
@@ -45,6 +46,14 @@ public class CountTimer : MonoBehaviour
                     {
                         countdownText.text = currentTime.ToString("F1");
                     }
+        }
+        if (outOfTime)
+        {
+            downGraphic.SetActive(true);
+        }
+        else
+        {
+            downGraphic.SetActive (false);
         }
     }
 
